@@ -10,7 +10,6 @@ The solution follows a modern Azure-based data engineering architecture:
 5. Azure Synapse Analytics / Power BI → Used for analytics and dashboarding
 
 ### 🧱 Solution Architecture Diagram
-(Cleaned version without any personal elements)
 ![Architecture](./architecture.png)
 
 ## 🚀 Data Ingestion Pipeline (Azure Data Factory)
@@ -38,11 +37,12 @@ spark.conf.set("fs.azure.account.oauth2.client.secret.olympicdatashaheer.dfs.cor
 spark.conf.set("fs.azure.account.oauth2.client.endpoint.olympicdatashaheer.dfs.core.windows.net", "https://login.microsoftonline.com/<TENANT_ID>/oauth2/token")
 
 ### 📥 Reading Raw Data from ADLS Gen2
-athletes = spark.read.option("header", "true").option("inferSchema", "true").csv("abfss://tokyo-olympic-data@olympicdatashaheer.dfs.core.windows.net/raw-data/Athletes.csv")
-coaches = spark.read.option("header", "true").option("inferSchema", "true").csv("abfss://tokyo-olympic-data@olympicdatashaheer.dfs.core.windows.net/raw-data/Coaches.csv")
-entriesgender = spark.read.option("header", "true").option("inferSchema", "true").csv("abfss://tokyo-olympic-data@olympicdatashaheer.dfs.core.windows.net/raw-data/EntriesGender.csv")
-medals = spark.read.option("header", "true").option("inferSchema", "true").csv("abfss://tokyo-olympic-data@olympicdatashaheer.dfs.core.windows.net/raw-data/Medals.csv")
-teams = spark.read.option("header", "true").option("inferSchema", "true").csv("abfss://tokyo-olympic-data@olympicdatashaheer.dfs.core.windows.net/raw-data/Teams.csv")
+base_path_write = "abfss://tokyo-olympic-data@olympicdatashaheer.dfs.core.windows.net/raw-data/"
+athletes = spark.read.option("header", "true").option("inferSchema", "true").csv(base_path+"/Athletes.csv")
+coaches = spark.read.option("header", "true").option("inferSchema", "true").csv(base_path+"Coaches.csv")
+entriesgender = spark.read.option("header", "true").option("inferSchema", "true").csv(base_path+"EntriesGender.csv")
+medals = spark.read.option("header", "true").option("inferSchema", "true").csv(base_path+"Medals.csv")
+teams = spark.read.option("header", "true").option("inferSchema", "true").csv(base_path+"Teams.csv")
 
 ### 💾 Writing Transformed Data Back to ADLS (Processed Zone)
 base_path_write = "abfss://tokyo-olympic-data@olympicdatashaheer.dfs.core.windows.net/transformed-data/"
