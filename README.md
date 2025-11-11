@@ -71,20 +71,7 @@ The transformed data stored in ADLS can be connected to Azure Synapse Analytics 
 | Azure Synapse Analytics | Data modeling and analytical querying |
 | Power BI / Tableau / Looker Studio | Dashboard and visualization |
 
-## 📁 Folder Structure
-.
-├── datasets/
-│   ├── Athletes.csv
-│   ├── Coaches.csv
-│   ├── EntriesGender.csv
-│   ├── Medals.csv
-│   └── Teams.csv
-├── images/
-│   ├── architecture.png
-│   └── data_ingestion_pipeline.png
-├── olympic_data_etl.ipynb
-│   
-└── README.md
+
 
 ## 🧠 Key Learnings
 - Building end-to-end ETL pipelines on Azure
